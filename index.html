@@ -4,276 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注域 - 官方下载</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* 头部 */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-        .logo { font-size: 72px; margin-bottom: 15px; }
-        .header h1 { font-size: 36px; margin-bottom: 10px; }
-        .header p { font-size: 16px; opacity: 0.9; }
-        
-        /* 卡片通用 */
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        .card h2 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        /* 版本列表 */
-        .version-item {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-        .version-info h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        .version-info p {
-            font-size: 13px;
-            color: #666;
-        }
-        .version-info .badge {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 8px;
-        }
-        .version-info .badge.old {
-            background: #999;
-        }
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .download-btn:hover {
-            opacity: 0.9;
-        }
-        .extract-code {
-            width: 100%;
-            margin-top: 10px;
-            padding: 8px 12px;
-            text-align: center;
-            font-size: 13px;
-            color: #666;
-            background: rgba(102, 126, 234, 0.08);
-            border: 1px dashed rgba(102, 126, 234, 0.45);
-            border-radius: 8px;
-        }
-        .extract-code strong {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #5a63d8;
-            user-select: all;
-        }
-        
-        /* 介绍区域 */
-        .intro-section {
-            margin-bottom: 20px;
-        }
-        .intro-section h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .intro-section p, .intro-section li {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.8;
-        }
-        .intro-section ul {
-            padding-left: 20px;
-            margin-top: 8px;
-        }
-        .feature-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px 16px;
-            margin-top: 22px;
-        }
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.25s ease;
-        }
-        .feature-item:hover {
-            transform: translateY(-4px);
-        }
-        .feature-item .icon {
-            width: 66px;
-            height: 66px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 27px;
-            line-height: 1;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.14) 0%, rgba(118, 75, 162, 0.14) 100%);
-            border: 1.5px solid rgba(102, 126, 234, 0.35);
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.12), inset 0 0 0 4px rgba(255, 255, 255, 0.9);
-            margin-bottom: 14px;
-            transition: box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-        .feature-item:hover .icon {
-            border-color: rgba(102, 126, 234, 0.6);
-            box-shadow: 0 10px 22px rgba(102, 126, 234, 0.22), inset 0 0 0 4px rgba(255, 255, 255, 0.9);
-        }
-        .feature-item h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: #2b2f45;
-            margin-bottom: 7px;
-            letter-spacing: 0.2px;
-        }
-        .feature-item p {
-            font-size: 12.5px;
-            color: #6c7284;
-            line-height: 1.7;
-            max-width: 180px;
-        }
-        
-        /* 使用步骤 */
-        .step-list {
-            counter-reset: step;
-        }
-        .step-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            align-items: flex-start;
-        }
-        .step-num {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        .step-content h4 {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        .step-content p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* 提示框 */
-        .tips-box {
-            background: #fff8e6;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 0 10px 10px 0;
-            margin-top: 15px;
-        }
-        .tips-box strong {
-            color: #333;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .tips-box ul {
-            padding-left: 18px;
-        }
-        .tips-box li {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-            line-height: 1.5;
-        }
-        
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: white;
-            opacity: 0.8;
-            font-size: 13px;
-        }
-        .footer a {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        /* 响应式 */
-        @media (max-width: 560px) {
-            .feature-list { grid-template-columns: 1fr; gap: 28px; margin-top: 18px; }
-            .feature-item .icon {
-                width: 58px;
-                height: 58px;
-                font-size: 24px;
-                margin-bottom: 12px;
-            }
-            .feature-item p { max-width: 300px; }
-        }
-        @media (max-width: 480px) {
-            .version-item { flex-direction: column; gap: 12px; align-items: stretch; }
-            .download-btn { text-align: center; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="active">下载界面</a>
+            <a href="about.html">产品介绍</a>
+            <a href="tutorial.html">使用教程</a>
+        </nav>
+        
         <!-- 头部 -->
         <div class="header">
-            <div class="logo">🌧️</div>
+            <div class="logo"><img src="334c0837b64e043f290d3ea8aa91faf2_720.png" alt="注域"></div>
             <h1>注域</h1>
-            <p>注释、标注、专注、注入 —— 强调精准操作与深度投入</p>
+            <p>「注域」是一款地图标注类产品，让你在地图的疆域上写下专属注解。在这里，你可以精准标注地点、整理地理信息，把散落的空间数据沉淀为自己的私人地图智库。它兼具空间感、掌控感与个性化，让每一处标注都成为属于你的领地。</p>
         </div>
         
         <!-- 下载区域 -->
@@ -322,109 +67,8 @@
                     <li>下载完成后，在通知栏或文件管理器中找到APK文件</li>
                     <li>如提示"未知来源应用"，请允许本次安装</li>
                     <li>如提示"风险应用"，请选择"仍要安装"（本软件安全无毒，绿色软件）</li>
-                    <li>建议先卸载旧版本再安装新版，避免数据冲突</li>
+                    <li>建议先卸载旧版本再安装新版，避免数据冲突，卸载前把数据先导出，避免数据丢失</li>
                 </ul>
-            </div>
-        </div>
-        
-        <!-- 产品介绍 -->
-        <div class="card">
-            <h2>📱 产品介绍</h2>
-            <div class="intro-section">
-                <p>注域是一款把“地图”变成“管理工具”的软件。你不只是可以看位置，还能在真实地图上记录优惠、管理房源、跟踪农事、安排任务，让每一处地点都有备注、有进度、有提醒。</p>
-            </div>
-            
-            <div class="intro-section">
-                <h3>✨ 核心功能</h3>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="icon">📍</div>
-                        <h4>全域地图标注</h4>
-                        <p>支持图钉、文字、路线、区域、出入口、资源分布等标记，可自定义颜色、图标和分类。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon">🎁</div>
-                        <h4>新客优惠与充值管理</h4>
-                        <p>标记商家新客优惠、设置到期提醒；记录充值卡余额、消费明细和剩余次数，避免忘记和浪费。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon">🏠</div>
-                        <h4>租客与房源管理</h4>
-                        <p>在地图上管理多套房，查看租客状态、租期、租金和收租日历，支持红黄绿状态区分和一键催收。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon">🌾</div>
-                        <h4>农事生产管理</h4>
-                        <p>记录养殖投放日期、喂食计划、预计出栏时间；管理蔬菜成熟周期、仓库库存和出入库，用进度条直观展示。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon">🗓️</div>
-                        <h4>时空任务视图</h4>
-                        <p>支持24小时任务轴和周计划视图，把时间和地图区域绑定，点击任务即可跳转到对应地点。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="icon">🗂️</div>
-                        <h4>图层隔离与经验分享</h4>
-                        <p>导入他人分享的地图时自动生成独立图层，可与自己的标注叠加对比，不会覆盖原有数据。</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="intro-section">
-                <h3>🎯 适用人群</h3>
-                <ul>
-                    <li>快递小哥：找楼栋困扰，找商家困扰</li>
-                    <li>户外工作者：提前规划，合理安排工作，每一处都能留下回忆</li>
-                    <li>农户、仓库主：农事提醒</li>
-                    <li>自由职业者、项目经理：任务视图、便签、区域管理</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- 使用教程 -->
-        <div class="card">
-            <h2>📖 使用教程</h2>
-            
-            <div class="step-list">
-                <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div class="step-content">
-                        <h4>下载安装</h4>
-                        <p>点击上方"下载"按钮，下载完成后点击安装。如提示风险，选择"仍要安装"。</p>
-                    </div>
-                </div>
-                
-                <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div class="step-content">
-                        <h4>开启定位</h4>
-                        <p>首次打开会请求定位权限，请选择"允许"。定位越精准，降雨预测越准确。</p>
-                    </div>
-                </div>
-                
-                <div class="step-item">
-                    <div class="step-num">3</div>
-                    <div class="step-content">
-                        <h4>设置提醒</h4>
-                        <p>进入"设置"→"降雨提醒"，开启"分钟级提醒"，可自定义提前提醒时间（默认15分钟）。</p>
-                    </div>
-                </div>
-                
-                <div class="step-item">
-                    <div class="step-num">4</div>
-                    <div class="step-content">
-                        <h4>添加小组件（可选）</h4>
-                        <p>长按桌面空白处→选择"小组件"→找到"注域"→拖到桌面，实时查看天气。</p>
-                    </div>
-                </div>
-                
-                <div class="step-item">
-                    <div class="step-num">5</div>
-                    <div class="step-content">
-                        <h4>进阶设置</h4>
-                        <p>在"设置"中可切换深色模式、调整更新频率、设置多个关注城市等。</p>
-                    </div>
-                </div>
             </div>
         </div>
         
@@ -434,12 +78,12 @@
             
             <div class="intro-section">
                 <h3>🔋 耗电吗？</h3>
-                <p>采用智能调度算法，仅在需要更新数据时唤醒，日均耗电不到1%。</p>
+                <p>采用智能调度算法，仅在需要更新数据时唤醒，日均耗电不到20%。</p>
             </div>
             
             <div class="intro-section">
                 <h3>📡 需要一直联网吗？</h3>
-                <p>需要联网获取最新气象数据，但支持离线查看上次更新的天气信息。</p>
+                <p>需要联网获取GPS定位数据，但支持离线查看上次更新的标注信息。</p>
             </div>
             
             <div class="intro-section">
